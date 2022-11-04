@@ -1,0 +1,92 @@
+@charset "ISO-8859-1";
+*{
+	box-sizing:border-box;
+	padding:0;
+	margin:0;
+}
+:root{
+	--pink:#fe8d88;
+	--lightOrange:#fdd06e;
+	--deepOrange:#fb9400;
+}
+body{
+	margin:0;
+	overflow:hidden;
+		background-color:#fff0ed;
+	
+}
+main{
+	padding:0px 60px;
+}
+.menu-categories{
+	padding:5rem;
+}
+.menu-categories-container{
+display: flex;
+    align-items: center;
+    justify-content: space-around;}
+.category-card{
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 150px;
+  height:100px;
+  padding:10px;
+  background-color:white;
+  border-radius:5px;
+  border:none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  /*&:active{
+  background-color:var(--deepOrange);
+  }*/
+    }
+    .food-card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+  background-color:white;
+  border-radius:5px;
+  border:none;
+    display: flex;
+    flex-direction: column;
+
+    }
+  .category-icon{
+  width:50px;
+  height:50px;
+  
+   }
+ .grid-container{
+ max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+   
+ }
+ .food-img{
+ position:relative;
+ background-image:url("../assets/images/pizza.jpg");
+ background-size:cover;
+ background-position:center;
+ height:200px;
+     border-radius: 5px 5px 0px 0px;
+ }
+ .fav-icon{
+ top: 5px;
+    right: 5px;
+    color: white;
+    position: absolute;
+ }
+ .food-desc{
+ padding:10px;
+ }
+ .food-desc-name{font-weight:bold;
+ color:#555;
+ }
+  @media (min-width: 600px) {
+  .grid-container { grid-template-columns: repeat(2, 1fr); }
+}
+ @media (min-width: 900px) {
+  .grid-container { grid-template-columns: repeat(4, 1fr); }
+}
