@@ -22,7 +22,7 @@
 <a href="menu.jsp">Menu</a>
 </li>
 <li>
-<a href="home.jsp">Contact us</a>
+<a href="contactUs.jsp">Contact us</a>
 </li>
 
 </ul>

@@ -70,7 +70,8 @@ li a {
   font-weight:bold;
   font-size:18px;
 }
-
+li a:active{
+	color:var(--pink);}
 li a:hover:not(.active) {
   background-color: orange;
   opacity:0.2;
@@ -151,17 +152,30 @@ li a:hover:not(.active) {
     top: 50%;
     left: 50%;
     transform: translate(-100%, 250%);
-	
+	text-align: center;
+    text-decoration: none;
 	
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 250px;
-  height:200px;
   position:absolute;
+  padding-bottom:15px;
   bottom:40px;
- left:40%;
+     left: 60%;
+    width: 200px;
+}
+.card:first-child{
+	bottom:80px;
+	  width: 250px;
+	  left:40%;
+	
+}
+.card:last-child{
+	left: 77%;
+    bottom: 80px;
+      width: 250px;
+    
 }
 .samples{
 	display:flex;
@@ -178,10 +192,10 @@ li a:hover:not(.active) {
     height: 140px;
         object-fit: cover;
     
-    transform: translate(-30%, -40%);
+    transform: translate(-50%, -70%);
 }
 .card-content{
-	    margin-top: 80px;
+	    margin-top: 15px;
         padding: 10px 15px;
     display: flex;
     justify-content: space-between;
@@ -191,13 +205,11 @@ li a:hover:not(.active) {
         padding: 0px 15px;
     display: flex;
     justify-content: space-between;
+    color: orange;
+    font-size: 20px;
+    font-weight: bold;
 }
-.card-img-container{
-	height:20px;
-	width:200px;
-	position:relative;
-	
-}
+
 .food-catgory-container{
 	display:grid;
 }

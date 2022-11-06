@@ -19,7 +19,7 @@
 			<button type="submit">Submit</button>
 		</form>-->
 		<div class="login-header" style="width:30%;"><p class="login-header-title">LOGIN</p></div>
-		<form>
+		<form action="../LoginController" method="post">
     <div class="user-box">
       <input type="email" name="emaiL" required>
       <label>Email</label>
@@ -33,7 +33,7 @@
       <span></span>
       <span></span>
       <span></span>
-      Submit
+     Submit
     </a>
     <a href="register.jsp">Create Account</a>
   </form>

@@ -1,3 +1,6 @@
+
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,6 +12,32 @@
 
 <title>EPICURE</title>
 </head>
+<style>
+.card-img-container{
+
+	position:relative;
+	background-color: white;
+    height: 110px;
+    width: 250;
+    margin: 10px;
+    margin-bottom: auto;
+    border-radius: 10px;
+}
+
+.card-content1{
+
+        padding: 0px 15px;
+    display: flex;
+    justify-content: space-between;
+    color: orange;
+    font-size: 20px;
+    font-weight: bold;
+}
+.cart-container{
+background-color:orange;
+    padding: 5px 10px;
+    border-radius: 5px;}
+</style>
 <body>
 <header>
 <jsp:include page="navigation.jsp" />
@@ -18,10 +47,9 @@
 <div class="hero-left">
 <h2 class="hero-left-header">Fastest Delivery & </h2>
 <span class="hero-left-header1">Easy Pickup</span>
-<button class="hero-btn">
+<a class="hero-btn" href="menu.jsp">
 ORDER NOW
-</button>
-
+</a>
 </div>
 <div class="hero-right">
 <div class="hero-img-bg">
@@ -35,34 +63,42 @@ ORDER NOW
 <div class="card">
 <div class="card-img-container">  <img src="../assets/images/pizza1.jpg" class="card-img"/></div>
 <div class="card-content">
- <p>Moterella pizza</p>
- <button class="btn" style="border:none;"><i class="fa fa-plus food-add-icon"></i></button>
+ <p style="font-weight:bold;">Moterella pizza</p>
+ <div class="cart-container ">
+ <i class="fa fa-shopping-cart" style="color: white; margin:auto;"></i>
  
+ </div>
+ 
+ <!-- <i class="fa fa-plus food-add-icon" style="position:absolute; color:white;"></i>-->
  
  </div>
   <div class="card-content1"><p>20$</p></div>
  
 </div>
 <div class="card">
-<div class="card-img-container">  <img src="../assets/images/pizza1.jpg" class="card-img"/></div>
+<div class="card-img-container">  <img src="../assets/images/noodles3.jpg" class="card-img"/></div>
 <div class="card-content">
- <p>Moterella pizza</p>
- <button class="btn" style="border:none;"><i class="fa fa-plus food-add-icon"></i></button>
+ <p style="font-weight:bold;">Chineese Noodles</p>
+<div class="cart-container ">
+ <i class="fa fa-shopping-cart" style="color: white; margin:auto;"></i>
  
+ </div> 
  
  </div>
-  <div class="card-content1"><p>20$</p></div>
+  <div class="card-content1"><p>60$</p></div>
  
 </div>
 <div class="card">
-<div class="card-img-container">  <img src="../assets/images/pizza1.jpg" class="card-img"/></div>
+<div class="card-img-container">  <img src="../assets/images/kitaw.jpg" class="card-img"/></div>
 <div class="card-content">
- <p>Moterella pizza</p>
- <button class="btn" style="border:none;"><i class="fa fa-plus food-add-icon"></i></button>
+ <p style="font-weight:bold;">Veg Briyani</p>
+<div class="cart-container ">
+ <i class="fa fa-shopping-cart" style="color: white; margin:auto;"></i>
  
+ </div> 
  
  </div>
-  <div class="card-content1"><p>20$</p></div>
+  <div class="card-content1"><p>80$</p></div>
  
 </div>
 </div>
