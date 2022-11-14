@@ -6,13 +6,20 @@ import java.sql.*;
 
 public class UserConnector {
 	
+	public void register() {
+		
+	}
+	
 	public boolean validate(String email, String password) {
 	try {
 		Class.forName("com.mysql.jdbc.Driver");  
-		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/foodDelivery","root","");  
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/foodDeliverys","root","");  
 		Statement st = con.createStatement();
-		ResultSet user= st.executeQuery("select * from employee where email='"
+		System.out.printf(email,password);
+		ResultSet user= st.executeQuery("select * from users where email='"
 				+email + "' and password = '" + password +"'");
+		System.out.println(user);
+
 		if(user.next()) {
 			return true;
 		}

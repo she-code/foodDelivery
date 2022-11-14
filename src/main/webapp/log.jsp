@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ page import="foodDelivery.models.Food"%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>EPICURE</title>
-<link rel="stylesheet" href="../CSS/login.css">
+<link rel="stylesheet" href="./CSS/login.css">
 
 </head>
 <body>
@@ -19,22 +20,16 @@
 			<button type="submit">Submit</button>
 		</form>-->
 		<div class="login-header" style="width:30%;"><p class="login-header-title">LOGIN</p></div>
-		<form action="../LoginController" method="post">
+		<form action="/foodDelivery/LoginController" method="post">
     <div class="user-box">
-      <input type="email" name="emaiL" required>
+      <input type="email" name="email" required>
       <label>Email</label>
     </div>
     <div class="user-box">
       <input type="password" name="password" required>
       <label>Password</label>
     </div>
-    <a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-     Submit
-    </a>
+    <input type="submit" value="Login"/>
     <a href="register.jsp">Create Account</a>
   </form>
 	</div>

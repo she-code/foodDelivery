@@ -30,7 +30,7 @@
 <ul>
 <li><input class="search-input"/>
 </li>
-<li><a href="login.jsp"><i class="fa-duotone fa-user fa"></i></a></li>
+<li><a href="log.jsp"><i class="fa-duotone fa-user fa"></i></a></li>
 
 <li >
 <a><i class="fa fa-shopping-cart food-add-icon"></i></a>

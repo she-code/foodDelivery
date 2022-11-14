@@ -5,9 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Menu</title>
-<link rel="stylesheet" href="../CSS/main.css">
+<link rel="stylesheet" href="./CSS/main.css">
 
-<link rel="stylesheet" href="../CSS/menu.css">
+<link rel="stylesheet" href="./CSS/menu.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
 .food-card-content {
@@ -132,6 +132,13 @@ padding: 3px;
 
 }
 </style>
+<!--  <script src="https://code.jquery.com/jquery-3.6.1.min.js"integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+-->
+
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
 </head>
 <body>
 <header>
@@ -143,16 +150,19 @@ padding: 3px;
 <section class="menu-categories">
 <div class="menu-categories-container">
 
-<div class="category-card">
+<form action="MenuServelet" method="get"><div class="category-card" id="menuItem">
 	<div class="category-card-content">
-		<img src="../assets/images/pizzaIcon.jpg" class="category-icon"/>
+		<img src="./assets/images/pizzaIcon.jpg" class="category-icon"/>
 	</div>
 	<p>Pizza</p>
 </div>
+<input type="hidden" name="pizza" value="pizza" id="menuType"/>
+</form>
 
-<div class="category-card">
+
+<div class="category-card " >
 	<div class="category-card-content">
-		<img src="../assets/images/ramen.png" class="category-icon"/>
+		<img src="./assets/images/ramen.png" class="category-icon"/>
 	</div>
 	<p>Noodles</p>
 </div>
@@ -164,13 +174,13 @@ padding: 3px;
 </div>
 <div class="category-card">
 	<div class="category-card-content">
-		<img src="../assets/images/masala-dosa.png" class="category-icon"/>
+		<img src="./assets/images/masala-dosa.png" class="category-icon"/>
 	</div>
 	<p>Dosa</p>
 </div>
 <div class="category-card">
 	<div class="category-card-content">
-		<img src="../assets/images/rice.png" class="category-icon"/>
+		<img src="./assets/images/rice.png" class="category-icon"/>
 	</div>
 	<p>Rice</p>
 </div>
@@ -181,15 +191,15 @@ padding: 3px;
 
 <!--  <form action="../java/categoryServlet" method="get">-->
 <div class="food-card trigger"  style="width:100%; " >
-	<div class="food-img food-img2" style="background-image:url(../assets/images/noodles3.jpg;)">
+	<div class="food-img food-img2" style="background-image:url(./assets/images/noodles3.jpg;)">
 	<i class="fa fa-solid fa-heart fav-icon"></i>
 	</div>
 	<div class="food-card-content">
-		<p style="font-weight:bold;">Massala Noodles</p>
+		<p style="font-weight:bold;" >Massala Noodles</p>
 				<div class="ratings"><p>4.5</p><span><i class="fa fa-star"></i></span></div>
 		
 	</div>
-	<div>	
+	<div id="food_list">	
 				<p class="price" style="padding: 0 1rem 1rem 1rem;">25$</p>
 		
 	</div>
@@ -209,7 +219,7 @@ padding: 3px;
 	</div>
 </div>
 <div class="food-card trigger"  style="width:100%; " >
-	<div class="food-img food-img2" style="background-image:url(../assets/images/noodlesEgg.jpg;)">
+	<div class="food-img food-img2" style="background-image:url(./assets/images/noodlesEgg.jpg;)">
 	<i class="fa fa-solid fa-heart fav-icon"></i>
 	</div>
 	<div class="food-card-content">
@@ -227,7 +237,7 @@ padding: 3px;
 	</div>
 </div>
 <div class="food-card trigger"  style="width:100%; " >
-	<div class="food-img food-img2" style="background-image:url(../assets/images/noodles2.jpg;)">
+	<div class="food-img food-img2" style="background-image:url(./assets/images/noodles2.jpg;)">
 	<i class="fa fa-solid fa-heart fav-icon"></i>
 	</div>
 	<div class="food-card-content">
@@ -248,7 +258,7 @@ padding: 3px;
     <div class="modal-content">
         <span class="close-button">×</span>
 <div class="food-card " style="margin-top:30px;">
-	<div class="food-img food-img1 " style="height:400px; background-image:url(../assets/images/noodles3.jpg)">
+	<div class="food-img food-img1 " style="height:400px; background-image:url(./assets/images/noodles3.jpg)">
 	<i class="fa fa-solid fa-heart fav-icon"></i>
 	<div class="veg-indi"></div>
 	</div>
@@ -303,5 +313,29 @@ function windowOnClick(event) {
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
+
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menuItem").click(function(){
+        	console.log("clicked")
+        	$.ajax({
+        		//var value = $("#menuType").val();
+        		url:"MenuServelet",
+        		method:"get",
+        		data:{"menuType":$("#menuType").val()},
+        		success:function(response){
+        			console.log(response)
+        			let obj=$.parseJSON(response)
+        			$.each(obj,function(key,value){
+        				$('#food_list').append('<p>"'+value.food_id+'"</p>')
+        			})
+      		}
+        	})
+        })
+        //css("border", "3px solid red");
+    });
 </script>
 </html>
