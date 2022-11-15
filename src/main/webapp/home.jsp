@@ -50,9 +50,12 @@ Cookie ck[]=request.getCookies();
 %>
 <h2 class="hero-left-header">Fastest Delivery &</h2>
 <span class="hero-left-header1">Easy Pickup</span>
-<a class="hero-btn" href="menu.jsp">
+<!-- <a class="hero-btn" href="menu.jsp">
 ORDER NOW
-</a>
+</a>-->
+<form action="MenuServelet" method="get">
+<input type="submit" value="Order now" class="hero-btn"/>
+</form>
 </div>
 <div class="hero-right">
 <div class="hero-img-bg">

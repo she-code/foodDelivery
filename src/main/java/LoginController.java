@@ -50,3 +50,78 @@ public class LoginController extends HttpServlet {
 	}
 
 }
+//<table>
+//<tbody>
+//<%ArrayList<Food> foods =(ArrayList<Food>) request.getAttribute("foodItems");
+//
+//for(Food food:foods){%><tr><td><%=food.getName()%></td></tr><%}%>
+//
+//</tbody>
+//
+//</table>
+//
+//<div class="food-card trigger"  style="width:100%; " >
+//<div class="food-img food-img2" style="background-image:url(./assets/images/noodles3.jpg;)">
+//<i class="fa fa-solid fa-heart fav-icon"></i>
+//</div>
+//<div class="food-card-content">
+//	<p style="font-weight:bold;" >Massala Noodles</p>
+//			<div class="ratings"><p>4.5</p><span><i class="fa fa-star"></i></span></div>
+//	
+//</div>
+//<div id="food_list">	
+//			<p class="price" style="padding: 0 1rem 1rem 1rem;">25$</p>
+//	
+//</div>
+//</div>
+//<div class="food-card trigger"  style="width:100%; " >
+//<div class="food-img food-img2" >
+//<i class="fa fa-solid fa-heart fav-icon"></i>
+//</div>
+//<div class="food-card-content">
+//	<p style="font-weight:bold;">Chinese Pizza</p>
+//			<div class="ratings"><p>4.5</p><span><i class="fa fa-star"></i></span></div>
+//	
+//</div>
+//<div>	
+//			<p class="price" style="padding: 0 1rem 1rem 1rem;">55$</p>
+//	
+//</div>
+//</div>
+//<div class="food-card trigger"  style="width:100%; " >
+//<div class="food-img food-img2" style="background-image:url(./assets/images/noodlesEgg.jpg;)">
+//<i class="fa fa-solid fa-heart fav-icon"></i>
+//</div>
+//<div class="food-card-content">
+//<%= foodItems.size() %>
+//
+//			<div class="ratings"><p>4</p><span><i class="fa fa-star"></i></span></div>
+//	
+//</div>
+//<div class="price-cart-holder">	
+//			<p class="price" style="padding: 0 1rem 1rem 1rem;">20$</p>
+//			 <div class="cart-container ">
+//<i class="fa fa-shopping-cart" style="color: white; margin:auto;"></i>
+//
+//</div>
+//	
+//</div>
+//</div>
+//<div class="food-card trigger"  style="width:100%; " >
+//<div class="food-img food-img2" style="background-image:url(./assets/images/noodles2.jpg;)">
+//<i class="fa fa-solid fa-heart fav-icon"></i>
+//</div>
+//<div class="food-card-content">
+//	<p style="font-weight:bold;">Chesse Pizza</p>
+//			<div class="ratings"><p>3.9</p><span><i class="fa fa-star"></i></span></div>
+//	
+//</div>
+//<div>	
+//			<p class="price" style="padding: 0 1rem 1rem 1rem;">25$</p>
+//	
+//</div>
+//</div>
+//<!--</form>-->
+//
+//</div>
+//</section>

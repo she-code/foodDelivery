@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="java.util.*"%>
+    <%@page import="foodDelivery.models.Food"%>
+ <%ArrayList foodItems = (ArrayList)request.getAttribute("foodItems");%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,29 +19,7 @@
     justify-content: space-between;
 }
 
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-}
 
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem 1.5rem;
-    width: 45rem;
-    border-radius: 0.5rem;
-}
 .price{
 font-weight: bold;
     padding-left: 1rem;
@@ -52,85 +33,22 @@ width: 45px;
     font-size: 14px;
     display: flex;
     justify-content: space-between;}
-.close-button {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
-}
 
-.close-button:hover {
-    background-color: darkgray;
-}
-.description{
-padding:0 1rem 1rem 1rem;
-
-}
-.show-modal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}
-.food-name{
-font-weight:bold;
-}
-.price-cart-holder{
-display:flex;
-justify-content:space-between;
-padding-right:1rem;
-}
-.cart-container{
-background-color:orange;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-bottom:10px;}
-.order-btn{
-    width: 200px;
-    padding: 10px;
+.details-btn{
+width: 100px;
+    padding: 5px;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     background-image: linear-gradient(to right, var(--lightOrange) , var(--pink));
     box-shadow: 0 0.75rem 0.5rem -0.5rem hsl(0deg 50% 80%);
     color: white;
- 
     text-align: center;
-    text-decoration: none;
+    font-size: 14px;
+    margin: auto;
 }
-.cart-btn{
-width: 200px;
-    padding: 10px;
-    border:2px solid #fb9400;
-    background-color:#e27d7d;
-    opacity:0.5;
-    color:white;
-}
-.order-action{
-display: flex;
-    justify-content: space-around;
-    padding: 0 1rem 2rem}
-.veg-indi{
-position: absolute;
-    width: 15px;
-    height: 15px;
-    background-color: #1bd41b;
-    bottom: 5px;
-    right: 5px;
-}
-.quantity{
-padding: 0 1rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    width: 40%;
-}
-.quant-option{
-padding: 3px;
-    background-color: white;
-
-}
+.form-category{
+margin: 0 auto 10px;
+    width: 50%;}
 </style>
 <!--  <script src="https://code.jquery.com/jquery-3.6.1.min.js"integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -150,192 +68,60 @@ padding: 3px;
 <section class="menu-categories">
 <div class="menu-categories-container">
 
-<form action="MenuServelet" method="get"><div class="category-card" id="menuItem">
-	<div class="category-card-content">
-		<img src="./assets/images/pizzaIcon.jpg" class="category-icon"/>
-	</div>
-	<p>Pizza</p>
-</div>
-<input type="hidden" name="pizza" value="pizza" id="menuType"/>
+<form action="FoodMenuServelet" method="get" >
+<input type="image" class="category-card" src="./assets/images/pizzaIcon.jpg"/>
+    <input type="hidden" value="pizza" name="menuType" />  
 </form>
 
+<form action="FoodMenuServelet" method="get">
+<input type="image" class="category-card" src="./assets/images/ramen.png"/>
+    <input type="hidden" value="noodles" name="menuType" />  
+</form>
+<form action="FoodMenuServelet" method="get">
+<input type="image" class="category-card" src="./assets/images/hamburger.png"/>
+    <input type="hidden" value="burger" name="menuType" />  
+</form>
+<form action="FoodMenuServelet" method="get">
+<input type="image" class="category-card" src="./assets/images/masala-dosa.png"/>
+    <input type="hidden" value="dosa" name="menuType" />  
+</form>
+<form action="FoodMenuServelet" method="get">
+<input type="image" class="category-card" src="./assets/images/rice.png"/>
+    <input type="hidden" value="rice" name="menuType" />  
+</form>
 
-<div class="category-card " >
-	<div class="category-card-content">
-		<img src="./assets/images/ramen.png" class="category-icon"/>
-	</div>
-	<p>Noodles</p>
-</div>
-<div class="category-card">
-	<div class="category-card-content">
-		<img src="../assets/images/hamburger.png" class="category-icon"/>
-	</div>
-	<p>Burger</p>
-</div>
-<div class="category-card">
-	<div class="category-card-content">
-		<img src="./assets/images/masala-dosa.png" class="category-icon"/>
-	</div>
-	<p>Dosa</p>
-</div>
-<div class="category-card">
-	<div class="category-card-content">
-		<img src="./assets/images/rice.png" class="category-icon"/>
-	</div>
-	<p>Rice</p>
-</div>
 </div>
 </section>
 <section class="">
 <div class="grid-container">
+<%for(int i=0;i<foodItems.size();i++){%>
+	<%Food food = (Food)foodItems.get(i); %>
+	
+	<div class="food-card trigger"  style="width:100%; id=<%=food.getId()%> " >
+<div class="food-img " style="  background-image:url('./assets/images/pizza1.jpg');
+">
+<i class="fa fa-solid fa-heart fav-icon"></i>
+</div>
+<div class="food-card-content">
+	<p style="font-weight:bold;"><%=food.getName()%></p>
+			<div class="ratings"><p><%=food.getRatings()%></p><span><i class="fa fa-star"></i></span></div>
+	
+</div>
+<div>	
+			<p class="price" style="padding: 0 1rem 1rem 1rem;"><%=food.getPrice()%>$</p>
+	<form action="FoodDetailsServelet" method="get" class="form-category">
+	<input type="hidden" name="id" value=<%=food.getId()%>/>
+	<input type="submit" value="VIEW" class="details-btn"/>
+	</form>
+</div>
+</div>
 
+<%}%>
 <!--  <form action="../java/categoryServlet" method="get">-->
-<div class="food-card trigger"  style="width:100%; " >
-	<div class="food-img food-img2" style="background-image:url(./assets/images/noodles3.jpg;)">
-	<i class="fa fa-solid fa-heart fav-icon"></i>
-	</div>
-	<div class="food-card-content">
-		<p style="font-weight:bold;" >Massala Noodles</p>
-				<div class="ratings"><p>4.5</p><span><i class="fa fa-star"></i></span></div>
-		
-	</div>
-	<div id="food_list">	
-				<p class="price" style="padding: 0 1rem 1rem 1rem;">25$</p>
-		
-	</div>
-</div>
-<div class="food-card trigger"  style="width:100%; " >
-	<div class="food-img food-img2" >
-	<i class="fa fa-solid fa-heart fav-icon"></i>
-	</div>
-	<div class="food-card-content">
-		<p style="font-weight:bold;">Chinese Pizza</p>
-				<div class="ratings"><p>4.5</p><span><i class="fa fa-star"></i></span></div>
-		
-	</div>
-	<div>	
-				<p class="price" style="padding: 0 1rem 1rem 1rem;">55$</p>
-		
-	</div>
-</div>
-<div class="food-card trigger"  style="width:100%; " >
-	<div class="food-img food-img2" style="background-image:url(./assets/images/noodlesEgg.jpg;)">
-	<i class="fa fa-solid fa-heart fav-icon"></i>
-	</div>
-	<div class="food-card-content">
-		<p style="font-weight:bold;">Egg Noodles</p>
-				<div class="ratings"><p>4</p><span><i class="fa fa-star"></i></span></div>
-		
-	</div>
-	<div class="price-cart-holder">	
-				<p class="price" style="padding: 0 1rem 1rem 1rem;">20$</p>
-				 <div class="cart-container ">
- <i class="fa fa-shopping-cart" style="color: white; margin:auto;"></i>
- 
- </div>
-		
-	</div>
-</div>
-<div class="food-card trigger"  style="width:100%; " >
-	<div class="food-img food-img2" style="background-image:url(./assets/images/noodles2.jpg;)">
-	<i class="fa fa-solid fa-heart fav-icon"></i>
-	</div>
-	<div class="food-card-content">
-		<p style="font-weight:bold;">Chesse Pizza</p>
-				<div class="ratings"><p>3.9</p><span><i class="fa fa-star"></i></span></div>
-		
-	</div>
-	<div>	
-				<p class="price" style="padding: 0 1rem 1rem 1rem;">25$</p>
-		
-	</div>
-</div>
-<!--</form>-->
-
 </div>
 </section>
-<div class="modal">
-    <div class="modal-content">
-        <span class="close-button">×</span>
-<div class="food-card " style="margin-top:30px;">
-	<div class="food-img food-img1 " style="height:400px; background-image:url(./assets/images/noodles3.jpg)">
-	<i class="fa fa-solid fa-heart fav-icon"></i>
-	<div class="veg-indi"></div>
-	</div>
-	<div class="food-card-content">
-		<p class="food-name">Massala Noodles</p>
-		<div class="ratings"><p>4.5</p><span><i class="fa fa-star"></i></span></div>
-	</div>
-	<p class="price">25$</p>
-	
-		<div class="description">
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-			 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-		</div>
-		<div class="quantity">
-		<p style="font-weight: bold;">Quantity</p>
-		<button class="quant-option">500g</button>
-		<button class="quant-option">1200g</button>
-		</div>
-		<div class="quantity">
-		<p style="font-weight: bold;">Highlights</p>
-		<ul style="flex-direction:column;">
-		<li> Glutten free</li>
-				<li> Lactose free</li>
-				<li>Vitamin E</li>
-		
-		</ul>
-		
-		</div>
-		<div class="order-action">
-		<button class="order-btn">ORDER NOW</button>
-		<button class="cart-btn">ADD TO CART</button>
-		</div>
-	</div>
-</div>    </div>
+
 </main>
 </body>
-<script>
-const modal = document.querySelector(".modal");
-const trigger = document.querySelector(".trigger");
-const closeButton = document.querySelector(".close-button");
 
-function toggleModal() {
-    modal.classList.toggle("show-modal");
-}
-
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-}
-
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
-
-
-
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#menuItem").click(function(){
-        	console.log("clicked")
-        	$.ajax({
-        		//var value = $("#menuType").val();
-        		url:"MenuServelet",
-        		method:"get",
-        		data:{"menuType":$("#menuType").val()},
-        		success:function(response){
-        			console.log(response)
-        			let obj=$.parseJSON(response)
-        			$.each(obj,function(key,value){
-        				$('#food_list').append('<p>"'+value.food_id+'"</p>')
-        			})
-      		}
-        	})
-        })
-        //css("border", "3px solid red");
-    });
-</script>
 </html>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -60,21 +61,22 @@ public class FoodController {
 		return true;
 
 	}
-
-	public List<Food>displayMenu(String menuType) {
-		Food food = new Food();
-		List <Food> foodList = new ArrayList<>();
+	public ArrayList<Food> displayFoodDetails(int id) {
+		ArrayList <Food> foodList = new ArrayList<Food>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/foodDeliverys","root","");
-			String query ="select * from foods ";
+			String query ="select * from foods where food_id=?";
+			//Statement st = con.createStatement();
 			PreparedStatement st = con.prepareStatement(query);
-			//st.setString(1, "pizza");
+			st.setInt(1, id);
+			//st.setString(1,"pizza");
 			ResultSet result = st.executeQuery();
-			if(result.next()) {
-				System.out.println(result);
+			//if(result.next()) {
+				//System.out.println(result);
 				//log(result.toString());
 				while(result.next()) {
+					Food food = new Food();
 					food.setId(result.getInt(1));
 					food.setCategory(result.getString("category"));
 					food.setCreated_At(result.getDate("created_at"));
@@ -92,7 +94,91 @@ public class FoodController {
 				//log(foods.toString());
 				//request.setAttribute("result", food);
 				//out.print(foods);
+				//}
+			con.close();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return foodList;
+	}
+	public ArrayList<Food> displayMenu(String menuType) {
+		ArrayList <Food> foodList = new ArrayList<Food>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/foodDeliverys","root","");
+			String query ="select * from foods ";
+			Statement st = con.createStatement();
+			//PreparedStatement st = con.prepareStatement(query);
+			//st.setString(1,"pizza");
+			ResultSet result = st.executeQuery(query);
+			//if(result.next()) {
+				//System.out.println(result);
+				//log(result.toString());
+				while(result.next()) {
+					Food food = new Food();
+					food.setId(result.getInt(1));
+					food.setCategory(result.getString("category"));
+					food.setCreated_At(result.getDate("created_at"));
+					food.setDescriptions(result.getString("description"));
+					food.setHighlights(result.getString("highlights"));
+					food.setName(result.getString("name"));
+					food.setWeight(Double.parseDouble(result.getString("weight")));
+					food.setPrice(Double.parseDouble(result.getString("price")));
+					food.setQuanrity(Double.parseDouble(result.getString("quantity")));
+					food.setImage(result.getBlob("image"));
+					food.setVeg(result.getBoolean("isVeg"));
+					food.setRatings(result.getDouble("ratings"));
+					foodList.add(food);
 				}
+				//log(foods.toString());
+				//request.setAttribute("result", food);
+				//out.print(foods);
+				//}
+			con.close();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return foodList;
+	}
+	public ArrayList<Food> displayCategoryMenu(String menuType) {
+		ArrayList <Food> foodList = new ArrayList<Food>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/foodDeliverys","root","");
+			String query ="select * from foods where category=?";
+			//Statement st = con.createStatement();
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1,menuType);
+			ResultSet result = st.executeQuery();
+			//if(result.next()) {
+				//System.out.println(result);
+				//log(result.toString());
+				while(result.next()) {
+					Food food = new Food();
+					food.setId(result.getInt(1));
+					food.setCategory(result.getString("category"));
+					food.setCreated_At(result.getDate("created_at"));
+					food.setDescriptions(result.getString("description"));
+					food.setHighlights(result.getString("highlights"));
+					food.setName(result.getString("name"));
+					food.setWeight(Double.parseDouble(result.getString("weight")));
+					food.setPrice(Double.parseDouble(result.getString("price")));
+					food.setQuanrity(Double.parseDouble(result.getString("quantity")));
+					food.setImage(result.getBlob("image"));
+					food.setVeg(result.getBoolean("isVeg"));
+					food.setRatings(result.getDouble("ratings"));
+					foodList.add(food);
+				}
+				//log(foods.toString());
+				//request.setAttribute("result", food);
+				//out.print(foods);
+				//}
 			con.close();
 
 		} catch (Exception e) {

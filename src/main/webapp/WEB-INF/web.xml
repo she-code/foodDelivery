@@ -49,4 +49,24 @@
     <servlet-name>MenuServelet</servlet-name>
     <url-pattern>/MenuServelet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FoodMenuServelet</display-name>
+    <servlet-name>FoodMenuServelet</servlet-name>
+    <servlet-class>FoodMenuServelet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FoodMenuServelet</servlet-name>
+    <url-pattern>/FoodMenuServelet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FoodDetailsServelet</display-name>
+    <servlet-name>FoodDetailsServelet</servlet-name>
+    <servlet-class>FoodDetailsServelet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FoodDetailsServelet</servlet-name>
+    <url-pattern>/FoodDetailsServelet</url-pattern>
+  </servlet-mapping>
 </web-app>
