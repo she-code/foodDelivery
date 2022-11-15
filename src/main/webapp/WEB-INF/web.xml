@@ -69,4 +69,14 @@
     <servlet-name>FoodDetailsServelet</servlet-name>
     <url-pattern>/FoodDetailsServelet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegisterServelet</display-name>
+    <servlet-name>RegisterServelet</servlet-name>
+    <servlet-class>RegisterServelet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServelet</servlet-name>
+    <url-pattern>/RegisterServelet</url-pattern>
+  </servlet-mapping>
 </web-app>

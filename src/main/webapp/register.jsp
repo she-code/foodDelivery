@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>EPICURE</title>
-<link rel="stylesheet" href="../CSS/login.css">
+<link rel="stylesheet" href="./CSS/login.css">
 
 </head>
 <body>
@@ -18,13 +18,13 @@
 			<button type="submit">Submit</button>
 		</form>-->
 		<div class="login-header"><p class="login-header-title">REGISTER</p></div>
-		<form>
+		<form method="post" action="RegisterServelet">
     <div class="user-box">
-      <input type="text" name="fname;" required>
+      <input type="text" name="firstName" required>
       <label>First Name</label>
     </div>
     <div class="user-box">
-      <input type="text" name="lname" required>
+      <input type="text" name="lastName" required>
       <label>Last Name</label>
     </div>
     <div class="user-box">
@@ -36,7 +36,7 @@
       <label>Phone</label>
     </div>
     <div class="user-box">
-      <input type="text" name="address" required>
+      <input type="text" name="default_shipping_address" required>
       <label>Address</label>
     </div>
     
@@ -49,13 +49,7 @@
       <input type="password" name="Cpassword" required>
       <label>Confirm Password</label>
     </div>
-    <a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Submit
-    </a>
+  <input type="submit" value="Register" /> 
         <a href="login.jsp">LOGIN</a>
     
   </form>

@@ -20,19 +20,17 @@
 			<button type="submit">Submit</button>
 		</form>-->
 		<div class="login-header" style="width:30%;"><p class="login-header-title">LOGIN</p></div>
-		<form action="/foodDelivery/LoginController" method="post">
-    <div class="user-box">
-      <input type="email" name="email" required>
-      <label>Email</label>
-    </div>
-    <div class="user-box">
-      <input type="password" name="password" required>
-      <label>Password</label>
-    </div>
-    <input type="submit" value="Login"/>
-    <a href="register.jsp">Create Account</a>
-  </form>
-	</div>
+			<form action="/foodDelivery/LoginController" method="post">
+				<div class="user-box">
+					<input type="email" name="email" required> <label>Email</label>
+				</div>
+				<div class="user-box">
+					<input type="password" name="password" required> <label>Password</label>
+				</div>
+				<input type="submit" value="Login" /> <a href="register.jsp">Create
+					Account</a>
+			</form>
+		</div>
 </main>
 </body>
 </html>

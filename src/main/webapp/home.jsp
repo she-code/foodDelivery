@@ -3,6 +3,12 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@page import="foodDelivery.models.Users"%>
+    
+     <%Users user = (Users)request.getAttribute("user");
+     
+     %>   
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,14 +45,17 @@ background-color:orange;
     border-radius: 5px;}
 </style>
 <body>
+<%if(user==null){
+	 response.sendRedirect("log.jsp");
+	 return;
+} %>
 <header>
 <jsp:include page="navigation.jsp" />
 
 <section class='hero'>
 <div class="hero-content">
 <div class="hero-left">
-<%out.print(request.getAttribute("loggedIn"));
-Cookie ck[]=request.getCookies();
+<%=user.getFirstName()
 %>
 <h2 class="hero-left-header">Fastest Delivery &</h2>
 <span class="hero-left-header1">Easy Pickup</span>

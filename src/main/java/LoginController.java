@@ -8,8 +8,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+
+import com.google.gson.Gson;
 
 import foodDelivery.UserConnector;
+import foodDelivery.models.Users;
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,16 +30,14 @@ public class LoginController extends HttpServlet {
 		
 		
 		UserConnector dao=new UserConnector();
-		boolean result=dao.validate(email,password);
-		request.setAttribute("loggedIn",result);
-		String res = new Boolean(result).toString();
-		log(res);
-
-		  if(result){
-			  request.setAttribute("loggedIn", result);
-			  Cookie cookie=new Cookie("loggedIn",res);
+		Users result=dao.login(email,password);	
+		Gson gson = new Gson();
+		Cookie userCookie = new Cookie("userCookie",URLEncoder.encode(gson.toJson(result),"UTF-8"));
+		userCookie.setMaxAge(720000);
+		response.addCookie(userCookie);
+		if(result!=null){
+			  request.setAttribute("user", result);
 			//adding cookie in the response
-			response.addCookie(cookie);
 			  
 			RequestDispatcher rd=request.getRequestDispatcher("home.jsp");
 			rd.include(request, response);
