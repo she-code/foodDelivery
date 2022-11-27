@@ -168,7 +168,16 @@ padding: 3px;
 	</div>
 	<div class="order-action">
 	<button class="order-btn">ORDER NOW</button>
-	<button class="cart-btn">ADD TO CART</button>
+	<form action="AddCart" method="post">
+		<button class="cart-btn" type="submit">ADD TO CART</button>
+	<input type="hidden" value=<%food.getId();%> name="product_id"/>
+		<input type="hidden" value=1 name="customer_id"/>
+	
+		<input type="hidden" value=400 name="total_amount"/>
+			<input type="hidden" value=3 name="quantity"/>
+		
+	
+	</form>
 	</div>
 </div>
 </div>    </div>

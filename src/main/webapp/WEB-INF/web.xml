@@ -79,4 +79,14 @@
     <servlet-name>RegisterServelet</servlet-name>
     <url-pattern>/RegisterServelet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCart</display-name>
+    <servlet-name>AddCart</servlet-name>
+    <servlet-class>AddCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCart</servlet-name>
+    <url-pattern>/AddCart</url-pattern>
+  </servlet-mapping>
 </web-app>
